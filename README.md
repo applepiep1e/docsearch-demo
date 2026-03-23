@@ -1,0 +1,81 @@
+# docsearch
+
+**docsearch** is a lightweight Python command-line tool for searching keywords in `.doc` and `.docx` documents within a specified directory. It can display a snippet of text surrounding each keyword occurrence.  
+
+---
+
+## Features
+
+- Search all Word documents in a directory and its subdirectories  
+- Display context around each keyword (configurable length)  
+- Available as both a command-line tool and Python API  
+- Simple installation, cross-platform support (Windows / Linux / macOS)
+
+---
+
+## Installation
+
+Clone the repository and install in editable mode for local development:
+
+```bash
+git clone https://github.com/yourusername/docsearch.git
+cd docsearch
+pip install -e .
+```
+
+---
+## Command-line Usage
+
+Basic usage:
+
+```bash
+docsearch <path> <keyword> [-w WINDOW]
+```
+
+Arguments:
+<path> Directory to search
+<keyword> Keyword to search for
+-w, --window Optional: number of characters to display around each match (default: 50)
+
+Example:
+```bash
+docsearch test Alice -w 50
+```
+Example output:
+```bash
+file: test\name1.docx
+    1. ...Alice...
+```
+
+## Python API Usage (Optional)
+You can also use docsearch programmatically:
+```bash
+from docSearch.docfile_processor import docFile
+
+# Initialize
+df = docFile(path="test", keyword="Alice")
+
+# Search documents
+matches = df.search_keyword_in_path(window=50)
+
+# Display results
+df.display_results(matches)
+
+```
+
+## Project Structure
+```bash
+docsearch/
+├─ docSearch/             # Package directory
+│   ├─ __init__.py
+│   ├─ docfile_processor.py
+│   └─ main.py
+├─ pyproject.toml
+└─ README.md
+```
+
+## Dependencies
+python-docx >= 0.8.11
+
+## License
+MIT License

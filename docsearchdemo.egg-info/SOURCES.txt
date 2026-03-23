@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+docsearchdemo/__init__.py
+docsearchdemo/docfile_processor.py
+docsearchdemo/main.py
+docsearchdemo.egg-info/PKG-INFO
+docsearchdemo.egg-info/SOURCES.txt
+docsearchdemo.egg-info/dependency_links.txt
+docsearchdemo.egg-info/entry_points.txt
+docsearchdemo.egg-info/requires.txt
+docsearchdemo.egg-info/top_level.txt

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docsearchdemo"
+version = "0.1.0"
+description = "Keyword search tool in .doc documents"
+readme = "README.md"
+authors = [{name = "L J"}]
+license = {text = "MIT"}
+dependencies = [
+	"python-docx>=0.8.11"
+]
+
+[project.scripts]
+docsearch = "docsearch.main:execute"
