@@ -79,3 +79,5 @@ python-docx >= 0.8.11
 
 ## License
 MIT License
+
+![CI](https://github.com/yourname/docsearchdemo/actions/workflows/test.yml/badge.svg)
