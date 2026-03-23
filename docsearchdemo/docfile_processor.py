@@ -26,7 +26,7 @@ class docFile:
 			raise FileNotFoundError(f"The provided path does not exsit: {path}")
 		return [str(file) for file in path.rglob("*.docx")]
 
-	def search_keyword(self, filepath, keyword=None, window=50):
+	def search_keyword(self, filepath, keyword=None, window=0):
 		"""
 		在单个文件中搜索关键字，并截取前后 window 个字符
 		:param filepath: docx 文件路径
@@ -35,6 +35,8 @@ class docFile:
 		:return: 匹配片段列表
 		"""
 		keyword = keyword or self.keyword
+		window = int(window) or 0
+		
 		if not keyword:
 			raise ValueError("keyword must be provided")
 
@@ -52,7 +54,7 @@ class docFile:
 		return results
 
 
-	def search_keyword_in_path(self, docfiles_path=None, keyword=None, window=50):
+	def search_keyword_in_path(self, docfiles_path=None, keyword=None, window=0):
 		"""
 		在目录下所有 docx 文件里搜索关键字
 		:param docfiles_path: 可选覆盖路径

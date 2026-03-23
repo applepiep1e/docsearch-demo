@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docsearchdemo"
-version = "0.1.0"
+version = "0.1.2"
 description = "Keyword search tool in .doc documents"
 readme = "README.md"
 authors = [{name = "L J"}]
@@ -14,4 +14,4 @@ dependencies = [
 ]
 
 [project.scripts]
-docsearch = "docsearch.main:execute"
+docsearch = "docsearchdemo.main:execute"

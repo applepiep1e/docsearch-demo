@@ -1,2 +1,2 @@
 [console_scripts]
-docsearch = docsearch.main:execute
+docsearch = docsearchdemo.main:execute

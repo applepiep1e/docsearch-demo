@@ -9,3 +9,5 @@ docsearchdemo.egg-info/dependency_links.txt
 docsearchdemo.egg-info/entry_points.txt
 docsearchdemo.egg-info/requires.txt
 docsearchdemo.egg-info/top_level.txt
+tests/test_cli.py
+tests/test_docfile.py
