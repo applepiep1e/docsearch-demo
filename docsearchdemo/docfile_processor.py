@@ -2,6 +2,10 @@ from __future__ import annotations
 
 from pathlib import Path
 from docx import Document
+from .logger import setup_logger
+from typing import List
+
+logger = setup_logger()
 
 class docFile:
 	def __init__(self, path=None, keyword=None):
@@ -13,18 +17,26 @@ class docFile:
 		self.path = Path(path) if path else None
 		self.keyword = keyword
 
-	def search_for_docfiles(self, docfiles_path=None):
+	def search_for_docfiles(self, docfiles_path=None) -> List[Path]:
 		"""
 		列出目录下所有 .docx 文件
 		:param docfiles_path: 可选覆盖路径
 		:return: 文件路径列表
 		"""
+
 		path = Path(docfiles_path) if docfiles_path else self.path
+
+		logger.info(f"Searching for .docx files in: {path}")
+
 		if not path:
 			raise ValueError("Path for search must be provided")
 		if not path.exists():
 			raise FileNotFoundError(f"The provided path does not exsit: {path}")
-		return [str(file) for file in path.rglob("*.docx")]
+
+		docile_list = [str(file) for file in path.rglob("*.docx")]
+
+		logger.info(f"Total {len(docile_list)} files found.")
+		return docile_list
 
 	def search_keyword(self, filepath, keyword=None, window=0):
 		"""
@@ -36,6 +48,8 @@ class docFile:
 		"""
 		keyword = keyword or self.keyword
 		window = int(window) or 0
+
+		logger.info(f"Searching {keyword} in file: {filepath}.")
 		
 		if not keyword:
 			raise ValueError("keyword must be provided")
@@ -44,6 +58,7 @@ class docFile:
 		results = []
 
 		for para in doc.paragraphs:
+
 			text = para.text
 			idx = text.find(keyword)
 			while idx != -1:
